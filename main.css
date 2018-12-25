@@ -1,0 +1,27 @@
+@font-face {
+    font-family: HeeboRegular;
+    src: url(font/Heebo-Regular.ttf);
+}
+
+body {
+    font-family: HeeboRegular;
+}
+
+.header {
+    background-color: #1976d2;
+    padding: 10px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 1280px;
+}
+
+.header .wrapper .title {
+    color: #ffffff;
+    margin: 0;
+}
+
+.content {
+    background-color: #eeeeee;
+}
