@@ -57,3 +57,49 @@ input::-webkit-input-placeholder {
     font-weight: bold;
     z-index: 100;
 }
+
+.content .tickets-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.tickets-container .side-nav {
+    max-width: 300px;
+}
+
+.side-nav .price-range .min-price {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.side-nav .price-range .max-price {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+
+.side-nav .price-range {
+
+}
+
+.sort-option {
+    padding: 5px 15px;
+}
+.sort-section .sorting .chosen {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.sort-section .sorting .drop-icon {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+}
+.card-media {
+    background-color: #eeeeee; 
+}

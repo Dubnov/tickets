@@ -23,16 +23,58 @@
                     NBA Regular Season 2018-2019 Tickets
                 </span>
             </div>
-            <section>
-                <aside></aside>
-                <article>
+            <section class="tickets-container" layout="row" layout-margin>
+                <aside class="side-nav" flex="20" layout="column">
+                    <md-input-container class="price-range">
+                        <label>Price Range</label>
+                        <input type="range" name="range" ng-model="ctrl.priceRange" ng-min="ctrl.minPrice" ng-max="ctrl.maxPrice">
+                        <span class="min-price">{{ ctrl.minPrice }}</span>
+                        <span class="max-price">{{ ctrl.maxPrice }}</span>
+                    </md-input-container>
+                </aside>
+                <article flex layout="column">
                     <md-card class="sort-section">
+                        <md-card-title layout="row" layout-align="space-between">
+                            <span class="tickets-amount">
+                                25 of {{ctrl.tickets.length}} tickets
+                            </span>
+                            <span class="sorting">
+                                sort by
+                                <md-menu>
+                                    <span class="chosen" ng-click="$mdMenu.open($event)" aria-label="Open sort menu">
+                                        {{ctrl.sortOption}}
+                                        <svg class="drop-icon" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.35">
+                                            <path d="M7 1.053L4.027 4 1 1" stroke="currentColor" fill="none"></path>
+                                        </svg>
+                                    </span>                                    
+                                    <md-menu-content width="2">
+                                        <md-menu-item ng-repeat="option in ctrl.sortOptions">
+                                            <md-button ng-click="ctrl.sortBy(option)">
+                                                <span md-menu-align-target>{{ option }}</span>
+                                            </md-button>
+                                        </md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+                            </span>
+                        </md-card-title>
                     </md-card>
-                    <md-card ng-repeat="ticket in tickets">
-                        asdf
+                    <md-card ng-repeat="ticket in ctrl.tickets">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{ticket.title}}</span>
+                                <span class="md-subhead">{{ ticket.price | currency}}</span>
+                            </md-card-title-text>
+                            <md-card-title-media>
+                                <div class="md-media-md card-media">
+                                    <img src="https://cdn.viagogo.net/img/svgpng4/77551/256963.png" alt="">
+                                </div>
+                            </md-card-title-media>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </md-card-actions>
                     </md-card>
-                    
-                    
                 </article>
             </section>
         </article>
