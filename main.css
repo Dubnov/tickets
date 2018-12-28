@@ -8,20 +8,52 @@ body {
 }
 
 .header {
-    background-color: #1976d2;
+    background-color: #ffffff;
     padding: 10px;
 }
 
-.wrapper {
-    margin: 0 auto;
-    width: 1280px;
+.header .title {
+    color: #000000;
+    margin: 0 20px;
 }
 
-.header .wrapper .title {
+.header .search {
+    background-color: #5799d7;
+    border: none;
+    border-radius: 10px;
     color: #ffffff;
-    margin: 0;
+    outline: none;
+    padding: 10px;
+    width: 260px;
+}
+
+input::-webkit-input-placeholder {
+    color: #ffffff !important;
 }
 
 .content {
     background-color: #eeeeee;
+}
+
+.content .banner {
+    background-color: #5799d7;
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.content .banner > img {
+    height: auto;
+    margin: -100px 0 0 0;
+    width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+
+.content .banner > span {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 100;
 }
