@@ -13,6 +13,7 @@
     "angular-animate": "^1.7.5",
     "angular-aria": "^1.7.5",
     "angular-material": "^1.1.11",
-    "angular-messages": "^1.7.5"
+    "angular-messages": "^1.7.5",
+    "angularjs-slider": "^6.6.1"
   }
 }

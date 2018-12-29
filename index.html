@@ -7,14 +7,32 @@
     <title>Ticket Share</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="node_modules/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="node_modules/angularjs-slider/dist/rzslider.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 
 <body ng-app="app" ng-controller="main as ctrl">
     <div style="height: 100%;" layout="column">
         <header flex="10" class="header" layout="row" layout-align="start center">
-            <h1 class="title">TicketShare</h1>
-            <input class="search" type="text" placeholder="Find events you would like to go">
+            <h1 class="title">Ticket Share</h1>
+            <div class="search" layout="row" layout-align="space-between">
+                <input type="text" placeholder="Find events you would like to go">
+                <svg class="search-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px" y="0px" width="20px" height="20px" fill="#ffffff" viewBox="0 0 76.652 76.652" style="enable-background:new 0 0 76.652 76.652;"
+                    xml:space="preserve">
+                    <g>
+                        <g id="Zoom_2_">
+                            <g>
+                                <path d="M75.549,68.735L58.189,52.06c4.267-5.283,6.814-11.907,6.814-19.097c0-17.216-14.58-31.221-32.504-31.221
+				C14.58,1.741,0,15.746,0,32.963s14.58,31.223,32.5,31.223c7.73,0,14.835-2.609,20.42-6.954l17.301,16.618
+				c0.732,0.707,1.699,1.061,2.662,1.061c0.967,0,1.93-0.354,2.666-1.061C77.02,72.435,77.02,70.149,75.549,68.735z M7.536,32.963
+				c0-13.223,11.2-23.979,24.964-23.979c13.768,0,24.968,10.756,24.968,23.979S46.268,56.949,32.5,56.949
+				C18.736,56.949,7.536,46.185,7.536,32.963z" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
         </header>
         <article flex class="content">
             <div class="banner" layout="row" layout-align="center center">
@@ -23,16 +41,18 @@
                     NBA Regular Season 2018-2019 Tickets
                 </span>
             </div>
-            <section class="tickets-container" layout="row" layout-margin>
-                <aside class="side-nav" flex="20" layout="column">
+            <section class="tickets-container" layout="row" layout-margin layout-align="space-between">
+                <aside class="side-nav" flex="15" layout="column">
                     <md-input-container class="price-range">
-                        <label>Price Range</label>
-                        <input type="range" name="range" ng-model="ctrl.priceRange" ng-min="ctrl.minPrice" ng-max="ctrl.maxPrice">
+                        <p>Price Range</p>
+                        <rzslider rz-slider-model="ctrl.priceSlider.minValue" rz-slider-high="ctrl.priceSlider.maxValue"
+                            rz-slider-options="ctrl.priceSlider.options"></rzslider>
+                        <!-- <input type="range" name="range" ng-model="ctrl.priceRange" ng-min="ctrl.minPrice" ng-max="ctrl.maxPrice">
                         <span class="min-price">{{ ctrl.minPrice }}</span>
-                        <span class="max-price">{{ ctrl.maxPrice }}</span>
+                        <span class="max-price">{{ ctrl.maxPrice }}</span> -->
                     </md-input-container>
                 </aside>
-                <article flex layout="column">
+                <article flex="70" layout="column">
                     <md-card class="sort-section">
                         <md-card-title layout="row" layout-align="space-between">
                             <span class="tickets-amount">
@@ -43,10 +63,11 @@
                                 <md-menu>
                                     <span class="chosen" ng-click="$mdMenu.open($event)" aria-label="Open sort menu">
                                         {{ctrl.sortOption}}
-                                        <svg class="drop-icon" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.35">
+                                        <svg class="drop-icon" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg"
+                                            stroke-linejoin="round" stroke-linecap="round" stroke-width="1.35">
                                             <path d="M7 1.053L4.027 4 1 1" stroke="currentColor" fill="none"></path>
                                         </svg>
-                                    </span>                                    
+                                    </span>
                                     <md-menu-content width="2">
                                         <md-menu-item ng-repeat="option in ctrl.sortOptions">
                                             <md-button ng-click="ctrl.sortBy(option)">
@@ -58,21 +79,23 @@
                             </span>
                         </md-card-title>
                     </md-card>
-                    <md-card ng-repeat="ticket in ctrl.tickets">
+                    <md-card ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter">
                         <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">{{ticket.title}}</span>
-                                <span class="md-subhead">{{ ticket.price | currency}}</span>
-                            </md-card-title-text>
                             <md-card-title-media>
                                 <div class="md-media-md card-media">
                                     <img src="https://cdn.viagogo.net/img/svgpng4/77551/256963.png" alt="">
                                 </div>
                             </md-card-title-media>
+                            <md-card-title-text>
+                                <span class="md-headline">{{ticket.title}}</span>
+                            </md-card-title-text>
+                            <div>
+                                <p>{{ ticket.price | currency}}</p>
+                                <md-button>Buy</md-button>
+                            </div>
                         </md-card-title>
                         <md-card-actions layout="row" layout-align="end center">
-                            <md-button>Action 1</md-button>
-                            <md-button>Action 2</md-button>
+                            
                         </md-card-actions>
                     </md-card>
                 </article>
@@ -86,6 +109,7 @@
 <script src="node_modules/angular-aria/angular-aria.min.js"></script>
 <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 <script src="node_modules/angular-material/angular-material.min.js"></script>
+<script src="node_modules/angularjs-slider/dist/rzslider.min.js"></script>
 <script src="app.js"></script>
 
 </html>

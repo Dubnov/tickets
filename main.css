@@ -1,6 +1,6 @@
 @font-face {
     font-family: HeeboRegular;
-    src: url(font/Heebo-Regular.ttf);
+    src: url(assets/font/Heebo-Regular.ttf);
 }
 
 body {
@@ -19,12 +19,24 @@ body {
 
 .header .search {
     background-color: #5799d7;
-    border: none;
     border-radius: 10px;
-    color: #ffffff;
-    outline: none;
+    color: #ffffff;    
     padding: 10px;
-    width: 260px;
+    width: 250px;
+}
+
+.header .search > input {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+}
+
+.header .search > .search-icon {
+    height: 18px;
+    width: 18px;
 }
 
 input::-webkit-input-placeholder {
@@ -81,8 +93,8 @@ input::-webkit-input-placeholder {
 
 
 
-.side-nav .price-range {
-
+.side-nav .price-range > span {
+    margin-bottom: 10px;
 }
 
 .sort-option {

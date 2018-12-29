@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngMaterial', 'ngMessages'])
+        .module('app', ['ngMaterial', 'ngMessages', 'rzModule'])
         .controller('main', controller)
 
     controller.$inject = [];
@@ -19,13 +19,25 @@
 
         self.initRangePrices = () => {
             const prices = self.tickets.map(x => x.price);
-            self.minPrice = Math.min(...prices);
-            self.maxPrice = Math.max(...prices);
+            
+
+            self.priceSlider = {
+                minValue: Math.min(...prices),
+                maxValue: Math.max(...prices),
+                options: {
+                    floor: Math.min(...prices),
+                    ceil: Math.max(...prices),
+                }
+            }
         }
 
         self.sortBy = (option) => {
             self.sortOption = option || 'Recommended';
             self.sortTickets(self.sortOption);
+        }
+
+        self.priceRangeFilter = (tick) => {
+            return (tick.price >= self.priceSlider.minValue && tick.price <= self.priceSlider.maxValue)
         }
 
         self.sortTickets = (option) => {
