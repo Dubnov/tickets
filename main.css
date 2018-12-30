@@ -53,21 +53,41 @@ input::-webkit-input-placeholder {
     width: 100%;
     overflow: hidden;
     position: relative;
+    /* text-align: center; */
 }
 
-.content .banner > img {
-    height: auto;
-    margin: -100px 0 0 0;
-    width: 100%;
+.content .banner .wrapper {
+    height: 100%;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.content .banner img {
+    height: 100%;
+    margin-right: 20px;
+    object-fit: cover;
+    width: 300px;
     vertical-align: middle;
     border: 0;
 }
 
-.content .banner > span {
+.content .banner p {
     color: #ffffff;
     font-size: 20px;
-    font-weight: bold;
+    margin: 0;
     z-index: 100;
+}
+
+.content .banner .title {
+    font-weight: bold;
+}
+
+.content .banner .location {
+    font-size: 16px;
+}
+
+.content .banner .date {
+    font-size: 14px;
 }
 
 .content .tickets-container {
@@ -79,22 +99,13 @@ input::-webkit-input-placeholder {
     max-width: 300px;
 }
 
-.side-nav .price-range .min-price {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-.side-nav .price-range .max-price {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-
-
-.side-nav .price-range > span {
+.side-nav md-input-container > p {
     margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.price-range .rz-pointer {
+    outline: none;
 }
 
 .sort-option {

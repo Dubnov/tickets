@@ -35,11 +35,17 @@
             </div>
         </header>
         <article flex class="content">
-            <div class="banner" layout="row" layout-align="center center">
-                <!-- <img src="images/basketball.jpg" alt=""> -->
-                <span class="title">
-                    NBA Regular Season 2018-2019 Tickets
-                </span>
+            <div class="banner">
+                <div class="wrapper" layout="row">
+                    <img src="assets/images/staples center.png" alt="">
+                    <div layout="column" layout-align="center start" layout-padding>
+                        <p class="title">
+                            Los Angeles Lakers vs Sacramento Kings
+                        </p>
+                        <p class="location">Staples Center, Los Angeles, California, USA</p>
+                        <p class="date">{{ ctrl.date | date:'medium' }}</p>
+                    </div>
+                </div>
             </div>
             <section class="tickets-container" layout="row" layout-margin layout-align="space-between">
                 <aside class="side-nav" flex="15" layout="column">
@@ -47,9 +53,15 @@
                         <p>Price Range</p>
                         <rzslider rz-slider-model="ctrl.priceSlider.minValue" rz-slider-high="ctrl.priceSlider.maxValue"
                             rz-slider-options="ctrl.priceSlider.options"></rzslider>
-                        <!-- <input type="range" name="range" ng-model="ctrl.priceRange" ng-min="ctrl.minPrice" ng-max="ctrl.maxPrice">
-                        <span class="min-price">{{ ctrl.minPrice }}</span>
-                        <span class="max-price">{{ ctrl.maxPrice }}</span> -->
+                    </md-input-container>
+                    <md-input-container class="areas-filter">
+                        <p>Select Areas</p>
+                        <div ng-repeat="area in ctrl.areas">
+                            <md-checkbox ng-model="ctrl.areaFilter[area]" aria-label="{{area}}" >
+                                {{ area }}
+                            </md-checkbox>
+                        </div>
+
                     </md-input-container>
                 </aside>
                 <article flex="70" layout="column">
@@ -79,7 +91,7 @@
                             </span>
                         </md-card-title>
                     </md-card>
-                    <md-card ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter">
+                    <md-card ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc">
                         <md-card-title>
                             <md-card-title-media>
                                 <div class="md-media-md card-media">
@@ -95,7 +107,7 @@
                             </div>
                         </md-card-title>
                         <md-card-actions layout="row" layout-align="end center">
-                            
+
                         </md-card-actions>
                     </md-card>
                 </article>
