@@ -36,8 +36,7 @@
         </header>
         <article flex class="content">
             <div class="banner">
-                <div class="wrapper" layout="row">
-                    <img src="assets/images/staples center.png" alt="">
+                <div class="wrapper" layout="row">                    
                     <div layout="column" layout-align="center start" layout-padding>
                         <p class="title">
                             Los Angeles Lakers vs Sacramento Kings
@@ -49,10 +48,20 @@
             </div>
             <section class="tickets-container" layout="row" layout-margin layout-align="space-between">
                 <aside class="side-nav" flex="15" layout="column">
+                    <img src="assets/images/staples-center.jpg" alt="" ng-click="ctrl.openImage($event, 'assets/images/staples-center.jpg')">
                     <md-input-container class="price-range">
                         <p>Price Range</p>
                         <rzslider rz-slider-model="ctrl.priceSlider.minValue" rz-slider-high="ctrl.priceSlider.maxValue"
                             rz-slider-options="ctrl.priceSlider.options"></rzslider>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Tickets Amount</label>
+                        <md-select ng-model="ctrl.ticketsAmount">
+                            <md-option ng-value="undefined"><em>Any</em></md-option>
+                            <md-option ng-repeat="amount in ctrl.ticketsAmountOptions" ng-value="amount">
+                            {{amount}}
+                            </md-option>
+                        </md-select>
                     </md-input-container>
                     <md-input-container class="areas-filter">
                         <p>Select Areas</p>
@@ -68,7 +77,7 @@
                     <md-card class="sort-section">
                         <md-card-title layout="row" layout-align="space-between">
                             <span class="tickets-amount">
-                                25 of {{ctrl.tickets.length}} tickets
+                                {{ctrl.ticketsDisplayed.length}} of {{ctrl.tickets.length}} tickets
                             </span>
                             <span class="sorting">
                                 sort by
@@ -91,24 +100,25 @@
                             </span>
                         </md-card-title>
                     </md-card>
-                    <md-card ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc">
-                        <md-card-title>
-                            <md-card-title-media>
-                                <div class="md-media-md card-media">
-                                    <img src="https://cdn.viagogo.net/img/svgpng4/77551/256963.png" alt="">
-                                </div>
-                            </md-card-title-media>
-                            <md-card-title-text>
-                                <span class="md-headline">{{ticket.title}}</span>
-                            </md-card-title-text>
-                            <div>
-                                <p>{{ ticket.price | currency}}</p>
-                                <md-button>Buy</md-button>
+                    <md-card class="ticket-entity" layout="row" layout-align="space-between" layout-margin
+                        ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc | filter:{amount:ctrl.ticketsAmount}">
+                        <div class="ticket-main" flex="65" layout="row" layout-align="start" layout-margin>
+                            <div layout="row" layout-align="center center">
+                                <img class="ticket-image" src="https://cdn.viagogo.net/img/svgpng4/77551/256963.png" alt=""
+                                    ng-click="ctrl.openImage($event, 'https://cdn.viagogo.net/img/svgpng4/77551/256963.png')">
                             </div>
-                        </md-card-title>
-                        <md-card-actions layout="row" layout-align="end center">
-
-                        </md-card-actions>
+                            <div class="ticket-details" flex layout="column" layout-align="start start">
+                                <span class="title">{{ticket.title}} | {{ticket.row}}</span>
+                                <span class="amount">{{ticket.amount}} tickets</span>
+                                <span class="view" ng-class="{'ok': ticket.view.status == '0', 'warning': ticket.view.status == '1', 'error': ticket.view.status == '2'}">
+                                    {{ticket.view.message}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ticket-buy" layout="column" layout-align="start center">
+                            <p class="price">{{ ticket.price | currency}}</p>
+                            <md-button class="buy-btn md-raised md-primary">Buy</md-button>
+                        </div>
                     </md-card>
                 </article>
             </section>

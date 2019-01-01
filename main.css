@@ -13,6 +13,7 @@ body {
 }
 
 .header .title {
+    font-size: 40px;
     color: #000000;
     margin: 0 20px;
 }
@@ -62,11 +63,11 @@ input::-webkit-input-placeholder {
     width: 80%;
 }
 
-.content .banner img {
-    height: 100%;
-    margin-right: 20px;
+.side-nav img {
+    cursor: pointer;
+    width: 100%;
     object-fit: cover;
-    width: 300px;
+    height: 240px;
     vertical-align: middle;
     border: 0;
 }
@@ -104,8 +105,18 @@ input::-webkit-input-placeholder {
     font-weight: bold;
 }
 
+.side-nav .areas-filter md-checkbox.md-checked .md-icon {
+    color: #5799d7 !important;
+    background-color: #5799d7 !important;
+}
+
 .price-range .rz-pointer {
+    background-color: #5799d7 !important;
     outline: none;
+}
+
+.rzslider .rz-selection {
+    background-color: #5799d7 !important;
 }
 
 .sort-option {
@@ -123,6 +134,70 @@ input::-webkit-input-placeholder {
     height: 13px;
     width: 13px;
 }
-.card-media {
-    background-color: #eeeeee; 
+
+.ticket-entity {
+    height: 150px;
+}
+
+.ticket-entity:hover {
+    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 2px 0 rgba(0,0,0,.12); */
+    box-shadow: 0 4px 14px 0 rgba(37,32,31,.25);
+}
+
+.ticket-entity .ticket-image {
+    background-color: #eeeeee;
+    cursor: pointer;
+    /* margin-right: 10px; */
+    outline: none;
+    width: 150px;
+    height: 100%;
+}
+
+.ticket-entity .ticket-details {
+    padding-top: 5px;
+}
+
+.ticket-entity .ticket-details .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticket-entity .ticket-details .amount {
+    font-style: italic;
+}
+
+.ticket-entity .ticket-details .view.ok {
+    color: green;
+}
+
+.ticket-entity .ticket-details .view.warning {
+    color: yellow;
+}
+
+.ticket-entity .ticket-details .view.error {
+    color: red;
+}
+
+.ticket-entity .ticket-buy .price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ticket-entity .ticket-buy .buy-btn {
+    background-color: #5799d7 !important;
+}
+
+.divider {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik0xIDF2NCIvPjwvc3ZnPg==);
+    background-repeat: repeat-y;
+    background-position: 50% 0;
+    background-size: .125rem .5rem;
+    width: .75rem;
+    margin: .375rem auto;
+    padding: .375rem 0;
+    position: relative;
+    z-index: 1;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    background-color: #fff;
 }
