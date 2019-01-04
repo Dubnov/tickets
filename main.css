@@ -54,7 +54,6 @@ input::-webkit-input-placeholder {
     width: 100%;
     overflow: hidden;
     position: relative;
-    /* text-align: center; */
 }
 
 .content .banner .wrapper {
@@ -67,6 +66,7 @@ input::-webkit-input-placeholder {
     cursor: pointer;
     width: 100%;
     object-fit: cover;
+    outline: none;
     height: 240px;
     vertical-align: middle;
     border: 0;
@@ -75,8 +75,7 @@ input::-webkit-input-placeholder {
 .content .banner p {
     color: #ffffff;
     font-size: 20px;
-    margin: 0;
-    z-index: 100;
+    margin: 2px;
 }
 
 .content .banner .title {
@@ -110,6 +109,32 @@ input::-webkit-input-placeholder {
     background-color: #5799d7 !important;
 }
 
+.side-nav .tickets-amount .amount-button {
+    background-color: #5799d7;
+    color: #ffffff;
+    margin: 6px !important;
+    min-width: unset !important;
+    text-transform: none;
+}
+
+.side-nav .tickets-amount .amount-button:hover,
+.side-nav .tickets-amount .amount-button:focus,
+.side-nav .tickets-amount .amount-button.clicked,
+.amount-button:not([disabled]):hover{
+    background-color: #2869c7 !important
+}
+
+.side-nav .advanced-search-link button {
+    color: #2869c7;
+    font-size: 18px;
+    margin: 0;
+    text-transform: none;
+}
+
+.side-nav .advanced-search-link p {
+    margin-left: 5px;
+}
+
 .price-range .rz-pointer {
     background-color: #5799d7 !important;
     outline: none;
@@ -125,9 +150,9 @@ input::-webkit-input-placeholder {
 .sort-section .sorting .chosen {
     cursor: pointer;
     font-weight: bold;
+    outline: none;
     text-decoration: underline;
 }
-
 
 .sort-section .sorting .drop-icon {
     cursor: pointer;
@@ -136,18 +161,19 @@ input::-webkit-input-placeholder {
 }
 
 .ticket-entity {
+    cursor: pointer;
     height: 150px;
+    outline: none;
+    position: relative;
 }
 
 .ticket-entity:hover {
-    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 2px 0 rgba(0,0,0,.12); */
     box-shadow: 0 4px 14px 0 rgba(37,32,31,.25);
 }
 
 .ticket-entity .ticket-image {
     background-color: #eeeeee;
     cursor: pointer;
-    /* margin-right: 10px; */
     outline: none;
     width: 150px;
     height: 100%;
@@ -180,11 +206,86 @@ input::-webkit-input-placeholder {
 
 .ticket-entity .ticket-buy .price {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
+    margin: 0;
+}
+
+.ticket-entity .ticket-buy .price + span {
+    color: #777777;
 }
 
 .ticket-entity .ticket-buy .buy-btn {
     background-color: #5799d7 !important;
+}
+
+.ticket-entity .ticket-buy .buy-btn:hover {
+    background-color: #287ac7 !important;
+}
+
+.ticket-entity .favorite {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ticket-entity-modal {
+    height: 35%;
+    width: 60%;
+}
+
+.ticket-entity-modal .favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.ticket-entity-modal .ticket-image {
+    background-color: #eeeeee;
+    cursor: pointer;
+    outline: none;
+    width: 220px;
+    height: 80%;
+    margin-bottom: 10px;
+}
+
+.ticket-entity-modal .ticket-details {
+    padding-top: 5px;
+    margin-left: 30px;
+}
+
+.ticket-entity-modal .ticket-details > span {
+    margin-bottom: 5px;
+}
+
+.ticket-entity-modal .ticket-details .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticket-entity-modal .ticket-details .view.ok {
+    color: green;
+}
+
+.ticket-entity-modal .ticket-details .view.warning {
+    color: yellow;
+}
+
+.ticket-entity-modal .ticket-details .view.error {
+    color: red;
+}
+
+.ticket-entity-modal .ticket-buy .price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ticket-entity-modal .ticket-buy .buy-btn {
+    margin: 20px;
+    background-color: #5799d7 !important;
+}
+
+.ticket-entity-modal .ticket-buy .buy-btn:hover {
+    background-color: #287ac7 !important;
 }
 
 .divider {
@@ -200,4 +301,29 @@ input::-webkit-input-placeholder {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     background-color: #fff;
+}
+
+.md-tooltip {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 14px;
+    border-radius: 5px;
+    border: #000000 solid 1px;
+    padding: 5px;
+}
+
+.md-button.md-default-theme.md-raised:not([disabled]):hover, .md-button.md-raised:not([disabled]):hover {
+    background-color: unset;
+}
+
+md-toast {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    text-align: center;
+}
+
+.md-toast-animating {
+    overflow: unset !important;
 }

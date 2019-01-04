@@ -12,7 +12,7 @@
 </head>
 
 <body ng-app="app" ng-controller="main as ctrl">
-    <div style="height: 100%;" layout="column">
+    <div layout="column">
         <header flex="10" class="header" layout="row" layout-align="start center">
             <h1 class="title">Ticket Share</h1>
             <div class="search" layout="row" layout-align="space-between">
@@ -36,12 +36,12 @@
         </header>
         <article flex class="content">
             <div class="banner">
-                <div class="wrapper" layout="row">                    
-                    <div layout="column" layout-align="center start" layout-padding>
+                <div class="wrapper" layout="row">
+                    <div layout="column" layout-align="center start">
                         <p class="title">
                             Los Angeles Lakers vs Sacramento Kings
                         </p>
-                        <p class="location">Staples Center, Los Angeles, California, USA</p>
+                        <p class="location">{{ctrl.eventLocation}}</p>
                         <p class="date">{{ ctrl.date | date:'medium' }}</p>
                     </div>
                 </div>
@@ -49,20 +49,20 @@
             <section class="tickets-container" layout="row" layout-margin layout-align="space-between">
                 <aside class="side-nav" flex="15" layout="column">
                     <img src="assets/images/staples-center.jpg" alt="" ng-click="ctrl.openImage($event, 'assets/images/staples-center.jpg')">
+                    <md-input-container class="tickets-amount">
+                        <p>Tickets Amount</p>
+                        <div layout="row" layout-wrap>
+                            <md-button flex="20" class="amount-button md-raised" ng-click="ctrl.selectAmount('')" ng-class="{'clicked': ctrl.ticketsAmount === ''}">Any</md-button>
+                            <md-button flex="20" class="amount-button md-raised" ng-repeat="amount in ctrl.ticketsAmountOptions" ng-click="ctrl.selectAmount(amount)"
+                                ng-class="{'clicked': ctrl.ticketsAmount === amount}">
+                                {{amount}}</md-button>
+                        </div>
+                    </md-input-container>
                     <md-input-container class="price-range">
-                        <p>Price Range</p>
-                        <rzslider rz-slider-model="ctrl.priceSlider.minValue" rz-slider-high="ctrl.priceSlider.maxValue"
-                            rz-slider-options="ctrl.priceSlider.options"></rzslider>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Tickets Amount</label>
-                        <md-select ng-model="ctrl.ticketsAmount">
-                            <md-option ng-value="undefined"><em>Any</em></md-option>
-                            <md-option ng-repeat="amount in ctrl.ticketsAmountOptions" ng-value="amount">
-                            {{amount}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
+                            <p>Price Range</p>
+                            <rzslider rz-slider-model="ctrl.priceSlider.minValue" rz-slider-high="ctrl.priceSlider.maxValue"
+                                rz-slider-options="ctrl.priceSlider.options"></rzslider>
+                        </md-input-container>
                     <md-input-container class="areas-filter">
                         <p>Select Areas</p>
                         <div ng-repeat="area in ctrl.areas">
@@ -70,8 +70,15 @@
                                 {{ area }}
                             </md-checkbox>
                         </div>
-
                     </md-input-container>
+                    <div class="advanced-search-link">
+                        <p>
+                            Didn't find what you're looking for?
+                        </p>
+                        <md-button md-no-ink>Click here for advanced search</md-button>
+                        <!-- <p>Click here for advanced search</p> -->
+
+                    </div>
                 </aside>
                 <article flex="70" layout="column">
                     <md-card class="sort-section">
@@ -100,7 +107,7 @@
                             </span>
                         </md-card-title>
                     </md-card>
-                    <md-card class="ticket-entity" layout="row" layout-align="space-between" layout-margin
+                    <md-card class="ticket-entity" layout="row" layout-align="space-between" layout-margin ng-click="ctrl.openTicket(ticket, $event)"
                         ng-repeat="ticket in ctrl.tickets | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc | filter:{amount:ctrl.ticketsAmount}">
                         <div class="ticket-main" flex="65" layout="row" layout-align="start" layout-margin>
                             <div layout="row" layout-align="center center">
@@ -108,17 +115,34 @@
                                     ng-click="ctrl.openImage($event, 'https://cdn.viagogo.net/img/svgpng4/77551/256963.png')">
                             </div>
                             <div class="ticket-details" flex layout="column" layout-align="start start">
-                                <span class="title">{{ticket.title}} | {{ticket.row}}</span>
+                                <span class="title">Section {{ticket.section}} | Row {{ticket.row}}</span>
                                 <span class="amount">{{ticket.amount}} tickets</span>
-                                <span class="view" ng-class="{'ok': ticket.view.status == '0', 'warning': ticket.view.status == '1', 'error': ticket.view.status == '2'}">
+                                <span class="view" ng-class="{'ok': ticket.view.status == '0', 'warning': ticket.view.status == '1', 'error': ticket.view.status == '2'}" layout="row">
                                     {{ticket.view.message}}
+                                    <span layout="row" layout-align="center center" style="margin-left: 5px;">
+                                        <img src="assets/icons/info.svg" width="15" height="15">
+                                        <md-tooltip md-direction="bottom">{{ticket.view.subMsg}}</md-tooltip>
+                                    </span>
                                 </span>
+                                <span>
+                                    Our Score: <strong>{{ ticket.score }}</strong>
+                                    <md-tooltip md-direction="bottom">Our score based on price, location and view from seat</md-tooltip>
+                                </span>                                
                             </div>
                         </div>
-                        <div class="ticket-buy" layout="column" layout-align="start center">
+                        <div class="ticket-buy" layout="column" layout-align="end center">
                             <p class="price">{{ ticket.price | currency}}</p>
-                            <md-button class="buy-btn md-raised md-primary">Buy</md-button>
+                            <span>per ticket</span>
+                            <md-button class="buy-btn md-raised md-primary" ng-click="ctrl.buyTicket($event)">Buy</md-button>
                         </div>
+                        <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
+                            <img  src="assets/icons/favorite-border.svg" alt="favorite">
+                            <md-tooltip md-direction="top">Add to favorites</md-tooltip>
+                        </md-button>
+                        <md-button ng-if="ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
+                            <img src="assets/icons/favorite.svg" alt="favorite">
+                            <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
+                        </md-button>
                     </md-card>
                 </article>
             </section>
@@ -132,6 +156,7 @@
 <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 <script src="node_modules/angular-material/angular-material.min.js"></script>
 <script src="node_modules/angularjs-slider/dist/rzslider.min.js"></script>
+<script src="data.js"></script>
 <script src="app.js"></script>
 
 </html>
