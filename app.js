@@ -17,11 +17,12 @@
         self.ticketsLimit = self.pageSize;
 
         self.sortOptions = [
-            "Recommended",
-            "Cheapest",
-            "Best Seats",
-            "Highest Price"
+            { name: 'Recommended', value: '-score'},
+            { name: 'Cheapest', value: 'price'},
+            { name: 'Best Seats', value: 'section'},
+            { name: 'Highest Price', value: '-price'}
         ];
+        self.sortChosen = ['-score'];
         self.date = new Date();
         self.areaFilter = {};
 
@@ -33,8 +34,12 @@
             self.initRowsRange();
             self.initSeatsRange();
             self.initScoreRange();
-            self.sortBy();
+            // self.sortBy();
         };
+
+        self.printSelectedSorting = () => {
+            return self.sortChosen.map(x => x.name).join(', ');
+        }
 
         self.hideAdvancedSearch = () => {
             self.isAdvancedSearch = false;
@@ -167,10 +172,10 @@
             return self.areaFilter[tick.area];
         };
 
-        self.sortBy = option => {
-            self.sortOption = option || "Recommended";
-            self.sortTickets(self.sortOption);
-        };
+        // self.sortBy = option => {
+        //     self.sortOption = option || "Recommended";
+        //     self.sortTickets(self.sortOption);
+        // };
 
         self.priceRangeFilter = tick => {
             return (
@@ -179,31 +184,35 @@
             );
         };
 
-        self.sortTickets = option => {
-            const tempTickets = angular.copy(self.tickets);
-            switch (option) {
-                case "Cheapest": {
-                    self.tickets = tempTickets.sort((a, b) => a.price - b.price);
-                    break;
-                }
-                case "Highest Price": {
-                    self.tickets = tempTickets.sort((a, b) => b.price - a.price);
-                    break;
-                }
-                case "Best Seats": {
-                    self.tickets = tempTickets.sort((a, b) => b.score - a.score);
-                    break;
-                }
-                case "Recommended": {
-                    self.tickets = tempTickets.sort((a, b) => b.score - a.score);
-                    break;
-                }
-                default: {
-                    self.tickets = tempTickets.sort((a, b) => b.score - a.score);
-                    break;
-                }
-            }
-        };
+        self.sortTickets = () => {
+            return self.sortChosen.map(x => x.value);
+        }
+
+        // self.sortTickets = option => {
+        //     const tempTickets = angular.copy(self.tickets);
+        //     switch (option) {
+        //         case "Cheapest": {
+        //             self.tickets = tempTickets.sort((a, b) => a.price - b.price);
+        //             break;
+        //         }
+        //         case "Highest Price": {
+        //             self.tickets = tempTickets.sort((a, b) => b.price - a.price);
+        //             break;
+        //         }
+        //         case "Best Seats": {
+        //             self.tickets = tempTickets.sort((a, b) => b.score - a.score);
+        //             break;
+        //         }
+        //         case "Recommended": {
+        //             self.tickets = tempTickets.sort((a, b) => b.score - a.score);
+        //             break;
+        //         }
+        //         default: {
+        //             self.tickets = tempTickets.sort((a, b) => b.score - a.score);
+        //             break;
+        //         }
+        //     }
+        // };
 
         self.greaterThan = function (prop, val) {
             return function (item) {

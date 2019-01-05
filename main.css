@@ -183,6 +183,11 @@ input::-webkit-input-placeholder {
     width: 13px;
 }
 
+.sort-section .sorting .sort-options {
+    margin: 0;
+    margin-left: 5px;
+}
+
 .ticket-entity {
     cursor: pointer;
     height: 150px;

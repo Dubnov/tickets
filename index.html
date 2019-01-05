@@ -104,13 +104,18 @@
                 </aside>
                 <article flex="70" layout="column">
                     <md-card class="sort-section">
-                        <md-card-title layout="row" layout-align="space-between">
+                        <md-card-title layout="row" layout-align="space-between center">
                             <span class="tickets-amount">
                                 {{ctrl.filteredTickets.length > ctrl.ticketsLimit ? ctrl.ticketsLimit : ctrl.filteredTickets.length}} of {{ctrl.filteredTickets.length}} tickets
                             </span>
-                            <span class="sorting">
+                            <span class="sorting" layout="row" layout-align="start center">
                                 sort by
-                                <md-menu>
+                                <md-select class="sort-options" ng-model="ctrl.sortChosen" ng-change="ctrl.sortTickets()" multiple>
+                                    <!-- <md-tooltip md-direction="bottom"></md-tooltip> -->
+                                    <md-option ng-value="option.value" ng-repeat="option in ctrl.sortOptions">{{option.name}}</md-option>
+                                </md-select>
+
+                                <!-- <md-menu>
                                     <span class="chosen" ng-click="$mdMenu.open($event)" aria-label="Open sort menu">
                                         {{ctrl.sortOption}}
                                         <svg class="drop-icon" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg"
@@ -125,12 +130,12 @@
                                             </md-button>
                                         </md-menu-item>
                                     </md-menu-content>
-                                </md-menu>
+                                </md-menu> -->
                             </span>
                         </md-card-title>
                     </md-card>
                     <md-card class="ticket-entity" layout="row" layout-align="space-between" layout-margin ng-click="ctrl.openTicket(ticket, $event)"
-                        ng-repeat="ticket in (ctrl.filteredTickets = (ctrl.tickets | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc | filter:{amount:ctrl.ticketsAmount} | filter: {favorite: ctrl.showFav} | filter: ctrl.advancedFilter) | limitTo: ctrl.ticketsLimit)">
+                        ng-repeat="ticket in (ctrl.filteredTickets = (ctrl.tickets | orderBy: ctrl.sortChosen | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc | filter:{amount:ctrl.ticketsAmount} | filter: {favorite: ctrl.showFav} | filter: ctrl.advancedFilter) | limitTo: ctrl.ticketsLimit)">
                         <div class="ticket-main" flex="80" layout="row" layout-align="start" layout-margin>
                             <div layout="row" layout-align="center center">
                                 <img ng-if="ticket" class="ticket-image" ng-src="assets/images/section {{ticket.section}}.png" alt=""
