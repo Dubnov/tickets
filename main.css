@@ -246,9 +246,6 @@ input::-webkit-input-placeholder {
 }
 
 .ticket-entity .favorite {
-    position: absolute;
-    top: 0;
-    right: 0;
 }
 
 .ticket-entity-modal {
@@ -257,9 +254,6 @@ input::-webkit-input-placeholder {
 }
 
 .ticket-entity-modal .favorite {
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 .ticket-entity-modal .ticket-image {
@@ -311,19 +305,58 @@ input::-webkit-input-placeholder {
     background-color: #287ac7 !important;
 }
 
-.divider {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik0xIDF2NCIvPjwvc3ZnPg==);
-    background-repeat: repeat-y;
-    background-position: 50% 0;
-    background-size: .125rem .5rem;
-    width: .75rem;
-    margin: .375rem auto;
-    padding: .375rem 0;
+.ticket-entity .ticket-buy {
+    border-left: 1.5px dashed #999;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     position: relative;
-    z-index: 1;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    background-color: #fff;
+    padding-left: 10px;
+    margin: 8px;
+}
+
+.divider:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-radius: 100%;
+    pointer-events: none;
+    -webkit-transform: translate(-50%,-50%) rotate(136deg);
+    -moz-transform: translate(-50%,-50%) rotate(136deg);
+    -o-transform: translate(-50%,-50%) rotate(136deg);
+    -ms-transform: translate(-50%,-50%) rotate(136deg);
+    transform: translate(-50%,-50%) rotate(136deg);
+    top: -10px;
+    left: 10px;
+}
+
+.divider:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-radius: 100%;
+    pointer-events: none;
+    -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+    -moz-transform: translate(-50%,-50%) rotate(-45deg);
+    -o-transform: translate(-50%,-50%) rotate(-45deg);
+    -ms-transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%,-50%) rotate(-45deg);
+    -webkit-transform: translate(-18%,-18%) rotate(-46deg);
+    -moz-transform: translate(-18%,-18%) rotate(-46deg);
+    -o-transform: translate(-18%,-18%) rotate(-46deg);
+    -ms-transform: translate(-18%,-18%) rotate(-46deg);
+    transform: translate(-18%,-18%) rotate(-46deg);
+    left: 0;
+    top: 100%;
 }
 
 .show-more-btn {

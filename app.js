@@ -218,7 +218,8 @@
                 bindToController: true,
                 controllerAs: 'dialogCtrl',
                 fullscreen: true,
-                template: `<img src="${imageUrl}">`,
+                multiple: true,
+                template: `<div><button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button></div><img src="${imageUrl}">`,
                 controller: function DialogController($scope, $mdDialog) {
                     $scope.closeDialog = function () {
                         $mdDialog.hide();
@@ -237,15 +238,25 @@
             $mdDialog.show({
                 clickOutsideToClose: true,
                 targetEvent: $event,
-                locals: { ticket, location: self.eventLocation, toggleFavorite: self.toggleFavorite, buyTicket: self.buyTicket },
+                locals: {
+                    ticket,
+                    location: self.eventLocation,
+                    toggleFavorite: self.toggleFavorite,
+                    buyTicket: self.buyTicket,
+                    openImage: self.openImage
+                },
                 controllerAs: 'dialogCtrl',
                 fullscreen: true,
                 template: `
             <md-dialog class="ticket-entity-modal" layout="row" layout-align="space-between">
+            <div><button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button></div>
                 <div class="ticket-main" layout="row" layout-align="start start" layout-margin>
                     <div layout="column" layout-align="start center">
-                        <img class="ticket-image" src="assets/images/section {{ticket.section}}.png" alt=""
-                            ng-click="ctrl.openImage($event, 'assets/images/section {{ticket.section}}.png')">
+                        <div>
+                            <img class="ticket-image" ng-src="assets/images/section {{ticket.section}}.png" alt=""
+                                ng-click="openImage($event, 'assets/images/section ' + ticket.section +'.jpg')">
+                            <md-tooltip md-direction="top">Click to View</md-tooltip>
+                        </div>
                         <div layout="column" layout-align="start stretch">
                             <span>
                                 Area <strong style="color: #287ac7;">{{ticket.area}}</strong>
@@ -280,24 +291,26 @@
                         </span>
                     </div>
                 </div>
-                <div class="ticket-buy" layout="column" layout-align="end center">
+                <div class="ticket-buy" layout="column" layout-align="space-between center">
+                    <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="toggleFavorite($event, ticket)">
+                        <img  src="assets/icons/favorite-border.svg" alt="favorite">
+                        <md-tooltip md-direction="top">Add to favorites</md-tooltip>
+                    </md-button>
+                    <md-button ng-if="ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="toggleFavorite($event, ticket)">
+                        <img src="assets/icons/favorite.svg" alt="favorite">
+                        <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
+                    </md-button>
                     <md-button class="buy-btn md-raised md-primary" ng-click="buyTicket($event); closeDialog();">Buy</md-button>
                 </div>
-                <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="toggleFavorite($event, ticket)">
-                    <img  src="assets/icons/favorite-border.svg" alt="favorite">
-                    <md-tooltip md-direction="top">Add to favorites</md-tooltip>
-                </md-button>
-                <md-button ng-if="ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="toggleFavorite($event, ticket)">
-                    <img src="assets/icons/favorite.svg" alt="favorite">
-                    <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
-                </md-button>
+                
             </md-dialog>
             `,
-                controller: function DialogController($scope, $mdDialog, ticket, location, toggleFavorite, buyTicket) {
+                controller: function DialogController($scope, $mdDialog, ticket, location, toggleFavorite, buyTicket, openImage) {
                     $scope.ticket = ticket;
                     $scope.location = location;
                     $scope.toggleFavorite = toggleFavorite
                     $scope.buyTicket = buyTicket;
+                    $scope.openImage = openImage;
 
                     $scope.closeDialog = function () {
                         $mdDialog.hide();

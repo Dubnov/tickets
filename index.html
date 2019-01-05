@@ -135,6 +135,7 @@
                             <div layout="row" layout-align="center center">
                                 <img ng-if="ticket" class="ticket-image" ng-src="assets/images/section {{ticket.section}}.png" alt=""
                                     ng-click="ctrl.openImage($event, 'assets/images/section ' + ticket.section + '.jpg')">
+                                <md-tooltip md-direction="bottom">Click to View</md-tooltip>
                             </div>
                             <div class="ticket-details" flex layout="column" layout-align="start start">
                                 <span class="title">
@@ -160,19 +161,21 @@
                                 </span>                                
                             </div>
                         </div>
+                        <!-- <div class="divider"></div> -->
                         <div class="ticket-buy" layout="column" layout-align="end center">
+                            <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
+                                <img src="assets/icons/favorite-border.svg" alt="favorite">
+                                <md-tooltip md-direction="top">Add to favorites</md-tooltip>
+                            </md-button>
+                            <md-button ng-if="ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
+                                <img src="assets/icons/favorite.svg" alt="favorite">
+                                <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
+                            </md-button>
                             <p class="price">{{ ticket.price | currency}}</p>
                             <span>per ticket</span>
                             <md-button class="buy-btn md-raised md-primary" ng-click="ctrl.buyTicket($event)">Buy</md-button>
                         </div>
-                        <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
-                            <img  src="assets/icons/favorite-border.svg" alt="favorite">
-                            <md-tooltip md-direction="top">Add to favorites</md-tooltip>
-                        </md-button>
-                        <md-button ng-if="ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
-                            <img src="assets/icons/favorite.svg" alt="favorite">
-                            <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
-                        </md-button>
+                        
                     </md-card>
                     <md-button class="md-raised show-more-btn" ng-if="ctrl.filteredTickets.length > ctrl.ticketsLimit" ng-click="ctrl.loadTickets()">Show more tickets</md-button>
                 </article>
