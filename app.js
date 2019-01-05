@@ -258,7 +258,7 @@
                 fullscreen: true,
                 template: `
             <md-dialog class="ticket-entity-modal" layout="row" layout-align="space-between">
-            <div><button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button></div>
+                <button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button>
                 <div class="ticket-main" layout="row" layout-align="start start" layout-margin>
                     <div layout="column" layout-align="start center">
                         <div>

@@ -188,20 +188,47 @@ input::-webkit-input-placeholder {
     margin-left: 5px;
 }
 
+.ticket {
+    width: 200px;
+    margin: auto;
+    display: inline-block;
+    box-sizing: content-box;
+    filter: drop-shadow(0 4px 14px rgba(37, 32, 31, .25));
+    position: relative;
+    height: 100px;
+    padding: 1em;
+    color: black;
+    font-size: 16px;
+    background-size: 51% 100%;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(circle at 0 50%, rgba(255,255,255,0) 15px, #ffffff 10px), radial-gradient(circle at 100% 50%, rgba(255,255,255,0) 30px, #ffffff 30px);
+    background-position: top left, top right;
+  }
+
 .ticket-entity {
     cursor: pointer;
     height: 150px;
     outline: none;
+    box-sizing: content-box;
+    filter: drop-shadow(0 2px 3px rgba(37, 32, 31, .25));
     position: relative;
+    padding: 1em;
+    color: black;
+    font-size: 16px;
+    background-size: 51% 100%;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(circle at -1% 50%, rgba(255,255,255,0) 30px, #ffffff 10px), radial-gradient(circle at 101% 50%, rgba(255,255,255,0) 30px, #ffffff 10px);
+    background-position: top left, top right;
 }
 
 .ticket-entity:hover {
-    box-shadow: 0 4px 14px 0 rgba(37,32,31,.25);
+    filter: drop-shadow(0 4px 8px rgba(37, 32, 31, .25));
 }
 
 .ticket-entity .ticket-image {
     background-color: #eeeeee;
     cursor: pointer;
+    margin-left: 10px;
     outline: none;
     width: 150px;
     height: 100%;
@@ -250,15 +277,10 @@ input::-webkit-input-placeholder {
     background-color: #287ac7 !important;
 }
 
-.ticket-entity .favorite {
-}
-
 .ticket-entity-modal {
     height: 45%;
     width: 60%;
-}
-
-.ticket-entity-modal .favorite {
+    position: relative;
 }
 
 .ticket-entity-modal .ticket-image {
@@ -315,7 +337,7 @@ input::-webkit-input-placeholder {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     position: relative;
-    padding-left: 10px;
+    padding: 0 15px;
     margin: 8px;
 }
 

@@ -111,30 +111,12 @@
                             <span class="sorting" layout="row" layout-align="start center">
                                 sort by
                                 <md-select class="sort-options" ng-model="ctrl.sortChosen" ng-change="ctrl.sortTickets()" multiple>
-                                    <!-- <md-tooltip md-direction="bottom"></md-tooltip> -->
                                     <md-option ng-value="option.value" ng-repeat="option in ctrl.sortOptions">{{option.name}}</md-option>
                                 </md-select>
-
-                                <!-- <md-menu>
-                                    <span class="chosen" ng-click="$mdMenu.open($event)" aria-label="Open sort menu">
-                                        {{ctrl.sortOption}}
-                                        <svg class="drop-icon" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg"
-                                            stroke-linejoin="round" stroke-linecap="round" stroke-width="1.35">
-                                            <path d="M7 1.053L4.027 4 1 1" stroke="currentColor" fill="none"></path>
-                                        </svg>
-                                    </span>
-                                    <md-menu-content width="2">
-                                        <md-menu-item ng-repeat="option in ctrl.sortOptions">
-                                            <md-button ng-click="ctrl.sortBy(option)">
-                                                <span md-menu-align-target>{{ option }}</span>
-                                            </md-button>
-                                        </md-menu-item>
-                                    </md-menu-content>
-                                </md-menu> -->
                             </span>
                         </md-card-title>
                     </md-card>
-                    <md-card class="ticket-entity" layout="row" layout-align="space-between" layout-margin ng-click="ctrl.openTicket(ticket, $event)"
+                    <div class="ticket-entity" layout="row" layout-align="space-between" layout-margin ng-click="ctrl.openTicket(ticket, $event)"
                         ng-repeat="ticket in (ctrl.filteredTickets = (ctrl.tickets | orderBy: ctrl.sortChosen | filter: ctrl.priceRangeFilter | filter: ctrl.areaFilterFunc | filter:{amount:ctrl.ticketsAmount} | filter: {favorite: ctrl.showFav} | filter: ctrl.advancedFilter) | limitTo: ctrl.ticketsLimit)">
                         <div class="ticket-main" flex="80" layout="row" layout-align="start" layout-margin>
                             <div layout="row" layout-align="center center">
@@ -166,7 +148,6 @@
                                 </span>                                
                             </div>
                         </div>
-                        <!-- <div class="divider"></div> -->
                         <div class="ticket-buy" layout="column" layout-align="end center">
                             <md-button ng-if="!ticket.favorite" class="favorite md-icon-button md-accent" aria-label="Favorite" ng-click="ctrl.toggleFavorite($event, ticket)">
                                 <img src="assets/icons/favorite-border.svg" alt="favorite">
@@ -181,18 +162,11 @@
                             <md-button class="buy-btn md-raised md-primary" ng-click="ctrl.buyTicket($event)">Buy</md-button>
                         </div>
                         
-                    </md-card>
+                    </div>
                     <md-button class="md-raised show-more-btn" ng-if="ctrl.filteredTickets.length > ctrl.ticketsLimit" ng-click="ctrl.loadTickets()">Show more tickets</md-button>
                 </article>
             </section>
         </article>
-        <!-- <md-button class="md-fab back-to-top" ng-show="ctrl.scrollTopDisplay()" ng-click="ctrl.scrollToTop()">
-            <svg height="100%" fill="#ffffff" viewBox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-            <md-tooltip md-direction="top">Back to Top</md-tooltip>
-        </md-button> -->
     </div>
 </body>
 <script src="node_modules/angular/angular.min.js"></script>
