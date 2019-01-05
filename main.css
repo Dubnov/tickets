@@ -13,9 +13,11 @@ body {
 }
 
 .header .title {
+    cursor: pointer;
     font-size: 40px;
     color: #000000;
     margin: 0 20px;
+    outline: none;
 }
 
 .header .search {
@@ -70,6 +72,19 @@ input::-webkit-input-placeholder {
     height: 240px;
     vertical-align: middle;
     border: 0;
+    margin-bottom: 10px;
+}
+
+.side-nav md-input-container {
+    margin: 5px 0;
+}
+
+.side-nav md-input-container p {
+    margin: 5px 0;
+}
+
+.side-nav .row-range {
+    width: 100%;
 }
 
 .content .banner p {
@@ -122,6 +137,14 @@ input::-webkit-input-placeholder {
 .side-nav .tickets-amount .amount-button.clicked,
 .amount-button:not([disabled]):hover{
     background-color: #2869c7 !important
+}
+
+.side-nav .advanced-search-section md-input-container {
+    width: 100%;
+}
+
+.side-nav .advanced-search-link {
+    margin-top: 10px;
 }
 
 .side-nav .advanced-search-link button {
@@ -229,7 +252,7 @@ input::-webkit-input-placeholder {
 }
 
 .ticket-entity-modal {
-    height: 35%;
+    height: 45%;
     width: 60%;
 }
 
@@ -301,6 +324,24 @@ input::-webkit-input-placeholder {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     background-color: #fff;
+}
+
+.show-more-btn {
+    border-radius: 18px;
+    background-color: #5799d7 !important;
+    color: #ffffff !important;
+    margin: 10px auto;
+    width: 200px;
+}
+
+.back-to-top {
+    background-color: #2869c7 !important;
+    bottom: 10px;
+    color: #ffffff;
+    right: 10px;
+    position: fixed;
+    width: 40px !important;
+    height: 40px !important;
 }
 
 .md-tooltip {
