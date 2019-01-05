@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module('app', ['ngMaterial', 'ngMessages', 'rzModule', 'infinite-scroll'])
+        .module('app', ['ngMaterial', 'ngMessages', 'rzModule'])
         .controller('main', controller);
 
     controller.$inject = ['$mdDialog', '$mdToast', '$window'];
