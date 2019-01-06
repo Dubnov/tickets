@@ -88,7 +88,10 @@
                             <rzslider rz-slider-model="ctrl.seatSlider.minValue" rz-slider-high="ctrl.seatSlider.maxValue" rz-slider-options="ctrl.seatSlider.options"></rzslider>
                         </md-input-container>
                         <md-input-container class="score-range">
-                            <p>Score Range</p>
+                            <p>
+                                Score Range
+                                <md-tooltip md-direction="bottom">Our score based on price, location and view from seat</md-tooltip>
+                            </p>
                             <rzslider rz-slider-model="ctrl.scoreSlider.minValue" rz-slider-high="ctrl.scoreSlider.maxValue" rz-slider-options="ctrl.scoreSlider.options"></rzslider>
                         </md-input-container>
                     </div>
@@ -143,7 +146,7 @@
                                     </span>
                                 </span>
                                 <span>
-                                    Our Score: <strong>{{ ticket.score }}</strong>
+                                    Our Score: <strong>{{ ticket.score }}/10</strong>
                                     <md-tooltip md-direction="bottom">Our score based on price, location and view from seat</md-tooltip>
                                 </span>                                
                             </div>

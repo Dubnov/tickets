@@ -292,7 +292,7 @@
                             </span>
                         </span>
                         <span>
-                            Our Score: <strong>{{ ticket.score }}</strong>
+                            Our Score: <strong>{{ ticket.score }}/10</strong>
                         </span>
                         <span layout="row">
                             <span>Description:</span>
@@ -309,7 +309,10 @@
                         <img src="assets/icons/favorite.svg" alt="favorite">
                         <md-tooltip md-direction="top">Remove from favorites</md-tooltip>
                     </md-button>
-                    <md-button class="buy-btn md-raised md-primary" ng-click="buyTicket($event); closeDialog();">Buy</md-button>
+                    <div layout="column" layout-align="center center">
+                        <span style="font: bold 20px HeeboRegular;">{{(ticket.price * ticket.amount) | currency}}</span>
+                        <md-button class="buy-btn md-raised md-primary" ng-click="buyTicket($event); closeDialog();">Buy</md-button>
+                    </div>
                 </div>
                 
             </md-dialog>

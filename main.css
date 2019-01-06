@@ -158,7 +158,7 @@ input::-webkit-input-placeholder {
     margin-left: 5px;
 }
 
-.price-range .rz-pointer {
+.rz-pointer {
     background-color: #5799d7 !important;
     outline: none;
 }
