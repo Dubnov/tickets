@@ -15,6 +15,7 @@
         self.pageSize = 8;
         self.showFav = undefined;
         self.ticketsLimit = self.pageSize;
+        self.date = new Date();
 
         self.sortOptions = [
             { name: 'Recommended', value: '-score', isDisabled: false},
@@ -23,7 +24,6 @@
             { name: 'Highest Price', value: '-price', isDisabled: false}
         ];
         self.sortChosen = ['-score'];
-        self.date = new Date();
         self.areaFilter = {};
 
         self.$onInit = () => {
@@ -180,6 +180,15 @@
         };
 
         self.resetFilters = () => {
+            self.ticketsAmount = '';
+            self.sortOptions = [
+                { name: 'Recommended', value: '-score', isDisabled: false},
+                { name: 'Cheapest', value: 'price', isDisabled: false},
+                { name: 'Best Seats', value: 'section', isDisabled: false},
+                { name: 'Highest Price', value: '-price', isDisabled: false}
+            ];
+            self.sortChosen = ['-score'];
+            self.areaFilter = {};
             self.initTickets();
             self.initRangePrices();
             self.initAmountFilter();
