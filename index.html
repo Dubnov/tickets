@@ -114,7 +114,7 @@
                             <span class="sorting" layout="row" layout-align="start center">
                                 sort by
                                 <md-select class="sort-options" ng-model="ctrl.sortChosen" ng-change="ctrl.sortTickets()" multiple>
-                                    <md-option ng-value="option.value" ng-repeat="option in ctrl.sortOptions">{{option.name}}</md-option>
+                                    <md-option ng-value="option.value" ng-disabled="option.isDisabled" ng-repeat="option in ctrl.sortOptions">{{option.name}}</md-option>
                                 </md-select>
                             </span>
                         </md-card-title>

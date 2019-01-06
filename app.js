@@ -17,10 +17,10 @@
         self.ticketsLimit = self.pageSize;
 
         self.sortOptions = [
-            { name: 'Recommended', value: '-score'},
-            { name: 'Cheapest', value: 'price'},
-            { name: 'Best Seats', value: 'section'},
-            { name: 'Highest Price', value: '-price'}
+            { name: 'Recommended', value: '-score', isDisabled: false},
+            { name: 'Cheapest', value: 'price', isDisabled: false},
+            { name: 'Best Seats', value: 'section', isDisabled: false},
+            { name: 'Highest Price', value: '-price', isDisabled: false}
         ];
         self.sortChosen = ['-score'];
         self.date = new Date();
@@ -185,7 +185,26 @@
         };
 
         self.sortTickets = () => {
-            return self.sortChosen.map(x => x.value);
+            if (self.sortChosen.some(x => x === 'price')) {
+                const index = self.sortOptions.findIndex(x => x.value === '-price');
+                if (index >= 0) {
+                    self.sortOptions[index].isDisabled = true;
+                }
+            } else if (self.sortChosen.some(x => x === '-price')) {
+                const index = self.sortOptions.findIndex(x => x.value === 'price');
+                if (index >= 0) {
+                    self.sortOptions[index].isDisabled = true;
+                }
+            } else {
+                let index = self.sortOptions.findIndex(x => x.value === 'price');
+                if (index >= 0) {
+                    self.sortOptions[index].isDisabled = false;
+                }
+                index = self.sortOptions.findIndex(x => x.value === '-price');
+                if (index >= 0) {
+                    self.sortOptions[index].isDisabled = false;
+                }
+            }
         }
 
         // self.sortTickets = option => {
