@@ -172,16 +172,25 @@
             return self.areaFilter[tick.area];
         };
 
-        // self.sortBy = option => {
-        //     self.sortOption = option || "Recommended";
-        //     self.sortTickets(self.sortOption);
-        // };
-
         self.priceRangeFilter = tick => {
             return (
                 tick.price >= self.priceSlider.minValue &&
                 tick.price <= self.priceSlider.maxValue
             );
+        };
+
+        self.sortText = () => {
+            const sortChoseText = [];
+            for (let i = 0; i < self.sortChosen.length; i++) {
+                const obj = self.sortOptions.find(x => x.value === self.sortChosen[i]);
+
+                if (obj) {
+                    sortChoseText.push(obj.name);
+                }
+                
+            }
+
+            return sortChoseText.join(', ');
         };
 
         self.sortTickets = () => {
