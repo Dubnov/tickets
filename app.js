@@ -179,6 +179,16 @@
             );
         };
 
+        self.resetFilters = () => {
+            self.initTickets();
+            self.initRangePrices();
+            self.initAmountFilter();
+            self.initAreasFilter();
+            self.initRowsRange();
+            self.initSeatsRange();
+            self.initScoreRange();
+        }
+
         self.sortText = () => {
             const sortChoseText = [];
             for (let i = 0; i < self.sortChosen.length; i++) {
