@@ -7,7 +7,7 @@ window.data = [
         row: 10,
         seat: [1,2,3],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -31,7 +31,7 @@ window.data = [
         row: 1,
         seat: [5, 6],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -55,7 +55,7 @@ window.data = [
         row: 28,
         seat: [15,16,17,18],
         amount: 4,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.8,
         area: "Upper Tier"
     },
@@ -67,7 +67,7 @@ window.data = [
         row: 18,
         seat: [11],
         amount: 1,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.3,
         area: "Upper Tier"
     },
@@ -79,7 +79,7 @@ window.data = [
         row: 2,
         seat: [13,14],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Upper Tier"
     },
@@ -91,7 +91,7 @@ window.data = [
         row: 14,
         seat: [3,4,5],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Boxes"
     },
@@ -103,7 +103,7 @@ window.data = [
         row: 10,
         seat: [1,2,3],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -127,7 +127,7 @@ window.data = [
         row: 1,
         seat: [5, 6],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -151,7 +151,7 @@ window.data = [
         row: 28,
         seat: [15,16,17,18],
         amount: 4,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.8,
         area: "Upper Tier"
     },
@@ -163,7 +163,7 @@ window.data = [
         row: 18,
         seat: [11],
         amount: 1,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.3,
         area: "Upper Tier"
     },
@@ -175,7 +175,7 @@ window.data = [
         row: 2,
         seat: [13,14],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Upper Tier"
     },
@@ -187,7 +187,7 @@ window.data = [
         row: 14,
         seat: [3,4,5],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Boxes"
     },
@@ -199,7 +199,7 @@ window.data = [
         row: 10,
         seat: [1,2,3],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -223,7 +223,7 @@ window.data = [
         row: 1,
         seat: [5, 6],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -247,7 +247,7 @@ window.data = [
         row: 28,
         seat: [15,16,17,18],
         amount: 4,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.8,
         area: "Upper Tier"
     },
@@ -259,7 +259,7 @@ window.data = [
         row: 18,
         seat: [11],
         amount: 1,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.3,
         area: "Upper Tier"
     },
@@ -271,7 +271,7 @@ window.data = [
         row: 2,
         seat: [13,14],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Upper Tier"
     },
@@ -283,7 +283,7 @@ window.data = [
         row: 14,
         seat: [3,4,5],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Boxes"
     },
@@ -295,7 +295,7 @@ window.data = [
         row: 10,
         seat: [1,2,3],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -319,7 +319,7 @@ window.data = [
         row: 1,
         seat: [5, 6],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.1,
         area: "Lower Tier"
     },
@@ -343,7 +343,7 @@ window.data = [
         row: 28,
         seat: [15,16,17,18],
         amount: 4,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.8,
         area: "Upper Tier"
     },
@@ -355,7 +355,7 @@ window.data = [
         row: 18,
         seat: [11],
         amount: 1,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 9.3,
         area: "Upper Tier"
     },
@@ -367,7 +367,7 @@ window.data = [
         row: 2,
         seat: [13,14],
         amount: 2,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Upper Tier"
     },
@@ -379,7 +379,7 @@ window.data = [
         row: 14,
         seat: [3,4,5],
         amount: 3,
-        view: { message: 'Unrestricted view', status: 0, subMsg: `You'll have a clear view of the game` },
+        view: { message: 'Unrestricted view', status: 0, subMsg: `From these seats, you'll have a clear view of the game` },
         score: 8.5,
         area: "Boxes"
     }

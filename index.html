@@ -147,7 +147,10 @@
                                 </span>
                                 <span>
                                     Our Score: <strong>{{ ticket.score }}/10</strong>
-                                    <md-tooltip md-direction="bottom">Our score based on price, location and view from seat</md-tooltip>
+                                    <span style="margin-left: 5px;">
+                                        <img src="assets/icons/info2.svg" width="15" height="15">
+                                        <md-tooltip md-direction="bottom">Our score for these tickets, based on price, location and view from seat</md-tooltip>
+                                    </span>
                                 </span>                                
                             </div>
                         </div>
@@ -170,9 +173,13 @@
                         <div style="font-size: 24px;">Sorry, there aren't any tickets that match your <strong>filters</strong></div>
                         <div style="font-size: 20px;"> Change your filters or <a style="color: #5799d7; cursor:pointer;" ng-click="ctrl.resetFilters()">show all tickets</a></div>
                     </div>
-                    <div class="ticket-entity" style="cursor: unset;" ng-if="ctrl.filteredTickets.length === 0 && ctrl.showFav" layout="column" layout-align="center center" layout-margin>
+                    <div class="ticket-entity" style="cursor: unset;" ng-if="!ctrl.hasFavorites() && ctrl.showFav" layout="column" layout-align="center center" layout-margin>
                         <div style="font-size: 24px;">You have no favorite tickets yet</div>
                         <div style="font-size: 20px;">Add a favorite ticket by clicking on the heart icon on the right</div>
+                    </div>
+                    <div class="ticket-entity" style="cursor: unset;" ng-if="ctrl.hasFavorites() && ctrl.filteredTickets.length === 0 && ctrl.showFav" layout="column" layout-align="center center" layout-margin>
+                        <div style="font-size: 22px;">Sorry, there aren't any favorite tickets that match your <strong>filters</strong></div>
+                        <div style="font-size: 20px;"> Change your filters or <a style="color: #5799d7; cursor:pointer;" ng-click="ctrl.resetFilters()">show all tickets</a></div>
                     </div>
                     <md-button class="md-raised show-more-btn" ng-if="ctrl.filteredTickets.length > ctrl.ticketsLimit" ng-click="ctrl.loadTickets()">Show more tickets</md-button>
                 </article>

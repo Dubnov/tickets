@@ -179,6 +179,10 @@
             );
         };
 
+        self.hasFavorites = () => {
+            return self.tickets.some(x => x.favorite);
+        }
+
         self.resetFilters = () => {
             self.ticketsAmount = '';
             self.sortOptions = [
@@ -305,7 +309,7 @@
                 fullscreen: true,
                 template: `
             <md-dialog class="ticket-entity-modal" layout="row" layout-align="space-between">
-                <button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button>
+                <button ng-click="closeDialog()" style="color:#fff;position: absolute; top:0;right:0; background-color:#5799d7;box-shadow:0 2px 5px 0 rgba(0,0,0,.26);border:none;padding:4px 8px;">X</button>
                 <div class="ticket-main" layout="row" layout-align="start start" layout-margin>
                     <div layout="column" layout-align="start center">
                         <div>
@@ -340,6 +344,10 @@
                         </span>
                         <span>
                             Our Score: <strong>{{ ticket.score }}/10</strong>
+                            <span style="margin-left: 5px;">
+                                <img src="assets/icons/info2.svg" width="15" height="15">
+                                <md-tooltip md-direction="bottom">Our score for these tickets, based on price, location and view from seat</md-tooltip>
+                            </span>
                         </span>
                         <span layout="row">
                             <span>Description:</span>
