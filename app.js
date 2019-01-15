@@ -279,7 +279,9 @@
                 controllerAs: 'dialogCtrl',
                 fullscreen: true,
                 multiple: true,
-                template: `<div><button ng-click="closeDialog()" style="position: absolute; top:0;right:0">X</button></div><img src="${imageUrl}">`,
+                template: `<div>
+                <button ng-click="closeDialog()" style="color:#fff;position: absolute; top:0;right:0; background-color:#5799d7;box-shadow:0 2px 5px 0 rgba(0,0,0,.26);border:none;padding:4px 8px;">X</button>                
+                </div><img src="${imageUrl}">`,
                 controller: function DialogController($scope, $mdDialog) {
                     $scope.closeDialog = function () {
                         $mdDialog.hide();
